@@ -3,16 +3,18 @@ import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWishlist } from "@/redux/features/wishlist";
 import { addToCart } from "@/redux/features/cart";
+import { useNavigate } from "react-router-dom";
 
 const ProductItem = (product) => {
   const { title, brand, price, thumbnail } = product;
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const wishlist = useSelector((state) => state.wishlist.value);
 
   return (
     <div className="bg-gray-100 group relative">
       <div className="h-[285px] overflow-hidden relative">
-        <img
+        <img onClick={() => navigate(`/product/${product.id}`)}
           className="w-full h-full object-contain group-hover:scale-105 duration-300"
           src={thumbnail}
           alt={title}

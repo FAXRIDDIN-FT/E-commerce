@@ -21,6 +21,7 @@ const Products = ({data, loading, count}) => {
         loading ? <Skeleton count={count}/> :
         data?.map((product) => (
           <ProductItem key={product.id} {...product}/>
+          
         ))
       }
     </div>

@@ -6,11 +6,12 @@ import {
 import { DeleteOutlined } from "@ant-design/icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.value);
   const dispatch = useDispatch();
-
+   const navigate = useNavigate();
   return (
     <div className="p-4 md:p-10 container mx-auto">
       <h2 className="text-2xl font-bold mb-6">   Your Cart</h2>
@@ -92,7 +93,7 @@ const Cart = () => {
                 cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
               )}
             </p>
-            <button className="mt-4 w-full bg-[#c89d38] hover:bg-[#b5892f] text-white py-2 rounded-md">
+            <button onClick={() => navigate("/checkout")} className="mt-4 w-full bg-[#c89d38] hover:bg-[#b5892f] text-white py-2 rounded-md">
               Check Out
             </button>
           </div>

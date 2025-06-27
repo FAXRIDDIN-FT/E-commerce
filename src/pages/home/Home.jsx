@@ -3,9 +3,11 @@ import Sorting from '@/components/ sorting/ Sorting'
 import Hero from '@/components/hero/hero'
 import Products from '@/components/products/Products'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const {getProduct} = useProduct()
+  const navigate = useNavigate()
   const {data, isLoading} = getProduct({limit: 8})
   
   return (
@@ -19,7 +21,7 @@ const Home = () => {
       <br />
       <Products data={data?.data?.products} loading={isLoading} count={8}/>
       <div className='mx-auto flex justify-center mt-[20px] w-[200px] bg-[#B88E2F] text-[#fff] p-[10px] '>
-        <button>Show more</button>
+        <button onClick={() => navigate('/shop')}>Show more</button>
       </div>
     </div>
   )

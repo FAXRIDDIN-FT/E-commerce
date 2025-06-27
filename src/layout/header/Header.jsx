@@ -19,7 +19,9 @@ const Header = () => {
       <nav className="container mx-auto items-center py-[20px] px-4">
         <div className="flex justify-between items-center">
           <div className="flex">
-            <img src={logo} alt="logo" className="w-[120px]" />
+            <Link to={"/"}>
+              <img src={logo} alt="logo" className="w-[120px]" />
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-[75px]">
@@ -74,6 +76,21 @@ const Header = () => {
           </NavLink>
           <NavLink to={"/"} onClick={() => setDrawerOpen(false)}>
             Contact
+          </NavLink>
+        </div>
+        <br />
+        <div className="flex  gap-5 text-2xl"> 
+          <UserDeleteOutlined className="cursor-pointer" />
+          <SearchOutlined
+            className="cursor-pointer"
+            onClick={() => setModalOpen(true)}
+          />
+          <NavLink to={"/wishlist"}>
+            <HeartOutlined className="cursor-pointer" />
+          </NavLink>
+          <NavLink to={"/cart"}>
+            {" "}
+            <ShoppingCartOutlined className="cursor-pointer" />
           </NavLink>
         </div>
       </Drawer>
